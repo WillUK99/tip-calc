@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tip Calc</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="./app.js"></script>
 </head>
 <body>
     <h1>Splitter</h1>
@@ -16,17 +17,27 @@
             <input type="number" min="0" id="bill" name="bill">
             <div class="container__inputs-tips">
                 <label for="tips">Select Tip %</label>
-                <button value=5>5%</button>
-                <button value=10>10%</button>
-                <button value=15>15%</button>
-                <button value=25>25%</button>
-                <button value=50>50%</button>
-                <input type="number" min="0">
+                <button class="tipBtn" value=5>5%</button>
+                <button class="tipBtn" value=10>10%</button>
+                <button class="tipBtn" value=15>15%</button>
+                <button class="tipBtn" value=25>25%</button>
+                <button class="tipBtn" value=50>50%</button>
+                <input type="number" min="0" max="99" id="customPercent">
             </div>
+            <label for="people">Number of people</label>
+            <input type="number" name="people" id="people">
         </div>
 
         <div class="container__outputs">
-
+            <div class="container__outputs-tip">
+                <h4>Tip Amount</h4> 
+                <h2 id="tipAmount">£00.00</h2>
+            </div>
+            <div class="container__outputs-total">
+                <h4>Total</h4>
+                <h2 id="totAmount">£00.00</h2>
+            </div>
+            <button type="reset">RESET</button>
         </div>
     </div>
 </body>
