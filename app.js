@@ -3,14 +3,10 @@ const percentButtons = [...document.querySelectorAll(".tipBtn")]
 const customPercentInput = document.getElementById("customPercent")
 const noOfPeopleInput = document.getElementById("people")
 
-let tipAmount = document.getElementById("tipAmount").innerText
-let totAmount = document.getElementById("totAmount").innerText
+let tipAmount = document.getElementById("tipAmount")
+let totAmount = document.getElementById("totAmount")
 
-let totalBill = 50
-let tip = 7
-let people = 3
-let tipPerPerson = 0
-let totPerPerson = 0
+let bill, totalBill, tipPercent, people, tipPerPerson, totPerPerson
 
 // todo
 // get the totalBill bill amount
@@ -20,56 +16,32 @@ let totPerPerson = 0
 // divid the totalBill (excl tip) by no.of people
 // insert totalBills to DOM 
 
+// Implement guarding for inputs 
+
 // reset button 
 
-// gets percentage of a number
-function percentage(num, per) {
-    return (num / 100) * per
-}
-
-// get total of percentage plus the total bill
-function getTotal(percentage) {
-    return totalBill + percentage
-}
-
-// divides total bill with tip pbetween all people 
-function divideTotal(getTotal) {
-
-}
-
-
-console.log(getTotal(percentage(totalBill, tip)))
-
-
-
-// getting amounts from amount input
-amountInput.addEventListener("change", e => {
-    e.preventDefault()
-    if (e.target.value <= 0) return
-    totalBill = e.target.value
-})
-
-
-// get tip amount to pass to addTip function
-percentButtons.forEach(element => {
-    element.addEventListener("click", e => {
-        e.preventDefault()
-        tip = element.getAttribute("value")
+function splitter() {
+    amountInput.addEventListener("change", (e) => {
+        bill = e.target.value
     })
-})
+    
+    percentButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            tipPercent = e.target.value
+        })
+    })
 
-// custom percent 
-customPercentInput.addEventListener("change", e => {
-    e.preventDefault()
-    if (e.target.value <= 0) return
-    tip = e.target.value
-})
+    customPercentInput.addEventListener("change", (e) => {
+        tipPercent = e.target.value
+    })
 
-//gets total people value
-noOfPeopleInput.addEventListener("change", e => {
-    e.preventDefault()
-    if(noOfPeopleInput.target.value <= 0) return
-    people = noOfPeopleInput.target.value
-})
+    noOfPeopleInput.addEventListener("change", (e) => {
+        people = e.target.value
+        console.log(bill / people)
+    })
+
+}
+
+splitter()
 
 
